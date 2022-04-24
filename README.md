@@ -1,22 +1,26 @@
 # Tags
 
-Support for tags in the yaml-metadata in the header of markdown files.
+This [MkDocs Plugin](https://www.mkdocs.org/dev-guide/plugins/) adds support for tags in the yaml-metadata in the header of markdown files.
 
-Extracts this metadata and creates a "Tags" page which lists all tags and all pages for each tag.
+See https://github.com/jldiaz/mkdocs-plugin-tags for the original repository.
+
+Features:
+- Extracts this metadata and creates a "Tags" page which lists all tags and all pages for each tag.
+- Adds the same page-tag associations to all template environments using `config.all_tags`.
 
 ## Quick Demo
 
 Install this plugin (it will also install mkdocs if required)
 
 ```shell
-$ pip install git+https://github.com/jldiaz/mkdocs-plugin-tags.git
+$ pip install git+https://github.com/ctalr/mkdocs-tags-plugin.git
 ```
 
 > **Note**. Since this package is in alpha stage, it is not yet available from pypi, so the only way to install it is via git.
 
 > **Additional note**. If you are using `pipenv` you must use the following syntax:
 > ```shell
-> $ pipenv install git+https://github.com/jldiaz/mkdocs-plugin-tags.git#egg=tags-macros-plugin
+> $ pipenv install git+https://github.com/ctalr/mkdocs-tags-plugin.git#egg=mkdocs-tags-plugin
 > ```
 
 Create a new documentation folder:
@@ -63,7 +67,7 @@ Visit the URL `/tags` (it should appear in the nav panel). This is an auto-gener
 
 # How it works
 
-On each build (even with `--livereload`), all the `.md` files composing the site are scanned, their "triple-dash-delimted" yaml header is extracted and parsed, and the list of tags is collected. 
+On each build (even with `--livereload`), all the `.md` files composing the site are scanned, their "triple-dash-delimted" yaml header is extracted and parsed, and the list of tags is collected.
 
 After that, a new temporal file is created (by default in `aux/tags.md`, but this is customizable) which contains the generated tags page, in markdown format. This file is not in the documents folder to avoid retriggering a build, but it is added to the list of files to be converted to HTML by mkdocs.
 

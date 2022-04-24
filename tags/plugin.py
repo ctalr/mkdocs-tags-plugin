@@ -60,7 +60,7 @@ class TagsPlugin(BasePlugin):
             self.metadata.append(get_metadata(f.src_path, config["docs_dir"]))
 
         # Create new file with tags
-        self.generate_tags_file()
+        self.generate_tags_file(config)
 
         # New file to add to the build
         newfile = File(
@@ -71,7 +71,7 @@ class TagsPlugin(BasePlugin):
         )
         files.append(newfile)
 
-    def generate_tags_page(self, data):
+    def generate_tags_page(self, data, config):
         if self.tags_template is None:
             templ_path = Path(__file__).parent  / Path("templates")
             environment = jinja2.Environment(
@@ -83,12 +83,13 @@ class TagsPlugin(BasePlugin):
                 loader=jinja2.FileSystemLoader(searchpath=str(self.tags_template.parent))
             )
             templ = environment.get_template(str(self.tags_template.name))
+        config["all_tags"] = sorted(data.items(), key=lambda t: t[0].lower())
         output_text = templ.render(
-                tags=sorted(data.items(), key=lambda t: t[0].lower()),
+                tags=config["all_tags"],
         )
         return output_text
 
-    def generate_tags_file(self):
+    def generate_tags_file(self, config):
         sorted_meta = sorted(self.metadata, key=lambda e: e.get("year", 5000) if e else 0)
         tag_dict = defaultdict(list)
         for e in sorted_meta:
@@ -101,7 +102,7 @@ class TagsPlugin(BasePlugin):
                 for tag in tags:
                     tag_dict[tag].append(e)
 
-        t = self.generate_tags_page(tag_dict)
+        t = self.generate_tags_page(tag_dict, config)
 
         with open(str(self.tags_folder / self.tags_filename), "w") as f:
             f.write(t)

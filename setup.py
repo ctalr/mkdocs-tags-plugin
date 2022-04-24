@@ -14,7 +14,7 @@ def read_file(fname):
 
 
 setup(
-    name='tags-macros-plugin',
+    name='mkdocs-tags-plugin',
     version='0.3.0',
     description="Processes tags in yaml metadata",
     long_description=read_file('README.md'),
