@@ -1,4 +1,4 @@
-# Tags
+# Tags Plus
 
 This [MkDocs Plugin](https://www.mkdocs.org/dev-guide/plugins/) adds support for tags in the yaml-metadata in the header of markdown files.
 

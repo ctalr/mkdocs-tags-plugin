@@ -15,7 +15,7 @@ from mkdocs.plugins import BasePlugin
 from mkdocs.config.config_options import Type
 
 
-class TagsPlugin(BasePlugin):
+class TagsPlusPlugin(BasePlugin):
     """
     Creates "tags.md" file containing a list of the pages grouped by tags
 

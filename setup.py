@@ -39,10 +39,10 @@ setup(
         'Programming Language :: Python :: 3.6',
     ],
     packages=find_packages(exclude=['*.tests']),
-    package_data={'tags': ['templates/*.md.template']},
+    package_data={'tagsplus': ['templates/*.md.template']},
     entry_points={
         'mkdocs.plugins': [
-            'tags = tags.plugin:TagsPlugin'
+            'tagsplus = tagsplus.plugin:TagsPlusPlugin'
         ]
     }
 )
