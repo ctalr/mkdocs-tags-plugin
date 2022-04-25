@@ -6,7 +6,7 @@ See https://github.com/jldiaz/mkdocs-plugin-tags for the original repository.
 
 Features:
 - Extracts this metadata and creates a "Tags" page which lists all tags and all pages for each tag.
-- Adds the same page-tag associations to all template environments using `config.all_tags`.
+- Adds the same page-tag associations to some template environments using `config.all_tags`.
 
 ## Quick Demo
 
