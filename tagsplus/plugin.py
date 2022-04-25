@@ -125,7 +125,7 @@ def get_metadata(name, path):
         return "".join(result)
 
     filename = Path(path) / Path(name)
-    link = filename.replace("/index.md", "").replace(".md", "")
+    link = str(filename).replace("/index.md", "").replace(".md", "")
     with filename.open() as f:
         metadata = extract_yaml(f)
         if metadata:
